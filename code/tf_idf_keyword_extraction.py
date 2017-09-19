@@ -13,6 +13,7 @@ from operator import itemgetter, attrgetter
     
 stopword_path='../jieba/extra_dict/stop_words.txt'
 idf_path = '../jieba/extra_dict/idf.txt.big'
+dict_path ='../jieba/extra_dict/dict.txt.big'
 topK = None
 title = ''
 content = ''
@@ -58,6 +59,7 @@ class word:
         self.w=w
 
 # 将新闻标题中的tf-idf值较高的提取出来作为候选关键词,从标题中选择3个
+jieba.set_dictionary(dict_path)
 jieba.analyse.set_stop_words(stopword_path) 
 jieba.analyse.TFIDF(idf_path)
 for x,w in jieba.analyse.extract_tags(title,topK=3,withWeight=True):

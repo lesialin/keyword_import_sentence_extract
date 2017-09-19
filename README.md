@@ -67,6 +67,10 @@ TextRank延伸PageRank的概念，計算句子的重要。
 
 
 ### 使用說明：
+Requirement
+```
+pip install networkx
+```
 
 進入script資料夾進行操作
 

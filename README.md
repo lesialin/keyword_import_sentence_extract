@@ -10,19 +10,37 @@ TF-IDF
 
 使用jieba套件內的tf-idf功能擷取關鍵字[1]，並且加上位置/關鍵字長度/詞性的加權[2]來計算關鍵字的權重。
 
-TF-IDF（Term Frequency - Inverse Document Frequency )
+- TF-IDF（Term Frequency - Inverse Document Frequency )
 
-當一個詞在
+  當一個詞在這篇文章出現的頻率高，在其他文章內出現的頻率低，這個詞很有可能為這篇文章的關鍵字。TF-IDF演算法包含了兩個部部份：TF詞頻(Term Frequency)以及IDF逆向文件頻率(Inverse Document Frequency)。
 
-
-
-
+  $tf_{t,d}$表示在_t_詞在文件_d_中t出現的頻率，$idf_t=log(\frac{D}{d_t})$ 表示在_t_詞在D個文件中出現的頻率。一個詞_t_在文章_d_中關鍵字的權重$w_{t,d}=tf_{t,d}*idf_t$
 
 
+- 位置加權
+
+  根據詞出現的位置給予較高的權重
+
+  $\begin{cases}w_t^{loc}=1.5 , if 詞出現title\\ w_t^{loc}=0, if 詞出現在內文\end{cases}$
+
+
+- 詞性加權
+
+  根據名詞的屬性給予不同的權重
+
+​	$\begin{cases}w_t^{p}=0 , if 非名詞\\ w_t^{lp}=1.5, if 普通名詞\\w_t^{lp}=2, if 專有名詞\\w_t^{lp}=1, if 包含名詞的名詞\end{cases}$
+
+- 長度加權
+
+​	長度長的詞給予較高的權重
+
+​	$w_t^l=\frac{len(w_t)}{max(len(w_1),...len(w_k))}$
 
 
 
+**關鍵字總權重**
 
+$w_t=tf_{t,d}*idf_t*(1+w_t^{loc}+w_t^p+w_t^l)$
 
 摘要提取方法：
 

@@ -1,10 +1,8 @@
-### 新聞關鍵字與摘要提取
+## 新聞關鍵字與摘要提取
 
 從新聞標題/內文提取該新聞的摘要及關鍵字
 
-
-
-關鍵字提取方法：
+#### 關鍵字提取方法
 
 TF-IDF
 
@@ -28,13 +26,13 @@ TF-IDF
 
   根據名詞的屬性給予不同的權重
 
-​	$\begin{cases}w_t^{p}=0 , if 非名詞\\ w_t^{lp}=1.5, if 普通名詞\\w_t^{lp}=2, if 專有名詞\\w_t^{lp}=1, if 包含名詞的名詞\end{cases}$
+  ​$\begin{cases}w_t^{p}=0 , if 非名詞\\ w_t^{lp}=1.5, if 普通名詞\\w_t^{lp}=2, if 專有名詞\\w_t^{lp}=1, if 包含名詞的名詞\end{cases}$
 
 - 長度加權
 
-​	長度長的詞給予較高的權重
+  ​長度長的詞給予較高的權重
 
-​	$w_t^l=\frac{len(w_t)}{max(len(w_1),...len(w_k))}$
+  ​$w_t^l=\frac{len(w_t)}{max(len(w_1),...len(w_k))}$
 
 
 
@@ -42,15 +40,33 @@ TF-IDF
 
 $w_t=tf_{t,d}*idf_t*(1+w_t^{loc}+w_t^p+w_t^l)$
 
-摘要提取方法：
+這裡使用[2]來提取關鍵字
 
-TextRank
+#### 摘要提取方法
+
+##### TextRank
+
+TextRank延伸PageRank的概念，計算句子的重要。
+
+步驟如下：
+
+1. 將本文分割成句子$S_1,S_2...,S_m$，以句子為節點建構圖
+
+2. 計算句子的相似度
+
+   $Similarity(S_i,S_j)=\frac{|\{w_k|w_k\in S_i\& w_k \in S_j\}|}{log(|S_i|)+log(|S_j|)}$
+
+3. 句子權重
+
+   $WS(V_i)=(1-d)+d*\displaystyle\sum_{V_j\in In(V_i)}\frac{w_{ji}}{\sum_{V_k\in Out(V_j)}WS(V_j)}$
+
+4. 根據分數抽取重要分數的句子作為摘要
+
+這裡使用[3]套件來提取文章的摘要/重要句。
 
 
 
-
-
-**使用說明：**
+### 使用說明：
 
 進入script資料夾進行操作
 
@@ -113,5 +129,6 @@ cd script/
 
 
 
+#### 心得：
 
-
+不管是用TF_IDF或是TextRank的方法來提取關鍵字以及摘要，有很大的關鍵在於斷字的處理，包含停用字以及idf資料文字檔的好壞。目前使用jieba斷句的結果不甚理想。有時間的話應該要試試不用斷字的演算法來處理。

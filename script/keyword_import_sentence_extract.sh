@@ -9,3 +9,4 @@ TOPK=$3
 ./extract_news.sh $NEWS_DIR $YEARSMONTH $NO_NEWS
 python ../code/tf_idf_keyword_extraction.py -t news_title.txt -c news_content.txt -k $TOPK
 python ../code/gen_abstract.py  -c news_content.txt 
+rm *.txt

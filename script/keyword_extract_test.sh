@@ -1,6 +1,6 @@
 NEWS_DIR=../news_data
 #the news duration is from 199102 to 200212
-YEARSMONTH=200202
+YEARSMONTH=199905
 #which news 
 NO_NEWS_START=40
 NO_NEWS_END=50

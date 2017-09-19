@@ -72,7 +72,7 @@ for x,w in jieba.analyse.extract_tags(content,withWeight=True):
             ok=1
             break
     if ok==1 :
-        words[i].loc=1.5
+        words[i].loc=1.0
         words[i].w=w
     else:
         words.append(word(x, w))
@@ -89,9 +89,9 @@ for i in range(0,words.__len__()):
     temp=pseg.cut(words[i].x)
     for s,flag in temp:
         if flag=='n' :#如果为普通名词
-            words[i].pos=3.0
+            words[i].pos=1.5
         elif flag[0]=='n' :#如果为专有名词
-            words[i].pos=3.5
+            words[i].pos=2.0
         elif 'n' in flag :#若为包含名词的词语
             words[i].pos=1.0
         else:

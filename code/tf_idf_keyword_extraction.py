@@ -11,8 +11,8 @@ import jieba.analyse
 import jieba.posseg as pseg
 from operator import itemgetter, attrgetter
     
-stopword_path='../code/extra_dict/stopword.txt'
-idf_path = '../code/extra_dict/idf_db.txt'
+stopword_path='../jieba/extra_dict/stop_words.txt'
+idf_path = '../jieba/extra_dict/idf.txt.big'
 topK = None
 title = ''
 content = ''
@@ -72,7 +72,7 @@ for x,w in jieba.analyse.extract_tags(content,withWeight=True):
             ok=1
             break
     if ok==1 :
-        words[i].loc=1.0
+        words[i].loc=1.5
         words[i].w=w
     else:
         words.append(word(x, w))

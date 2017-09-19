@@ -1,7 +1,7 @@
-#usage: ./keyword_extract.sh 199102 10 5
+#usage: ./keyword_import_sentence_extract_test.sh
 NEWS_DIR=../news_data
 #the news duration is from 199102 to 200212
-YEARSMONTH=200201
+YEARSMONTH=199102
 #which news 
 #which news 
 NO_NEWS_START=40

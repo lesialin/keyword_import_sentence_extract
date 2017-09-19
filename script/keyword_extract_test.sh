@@ -1,9 +1,9 @@
 NEWS_DIR=../news_data
 #the news duration is from 199102 to 200212
-YEARSMONTH=199905
+YEARSMONTH=199102
 #which news 
 NO_NEWS_START=40
-NO_NEWS_END=50
+NO_NEWS_END=45
 # print top K keywords
 TOPK=3
 

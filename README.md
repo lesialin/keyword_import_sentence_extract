@@ -6,9 +6,17 @@
 
 關鍵字提取方法：
 
-TD-IDF
+TF-IDF
 
 使用jieba套件內的tf-idf功能擷取關鍵字[1]，並且加上位置/關鍵字長度/詞性的加權[2]來計算關鍵字的權重。
+
+TF-IDF（Term Frequency - Inverse Document Frequency )
+
+當一個詞在
+
+
+
+
 
 
 
